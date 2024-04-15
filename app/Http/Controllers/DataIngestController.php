@@ -14,7 +14,8 @@ class DataIngestController extends Controller
         if ($dataPoint === null) {
             return response()->json([], 400);
         }
-        Event::dispatch(new DataPointReceived((float) $dataPoint));
+        $formatted = number_format($dataPoint, 2);
+        Event::dispatch(new DataPointReceived((float) $formatted));
         return response()->json();
     }
 }
