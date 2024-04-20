@@ -3,9 +3,11 @@
     <div class="flex items-center justify-center flex-col">
         @if($temperature)
             <p class="text-8xl mb-4 mt-4">{{$temperature}}° C</p>
-            <p>📡 Received at {{$lastCollectedAt->format('h:i:s')}}</p>
+            <p>📡 Received at {{$lastCollectedAt?->format('h:i:s')}}</p>
         @else
             <p class="mb-4 mt-4">No data collected yet</p>
         @endif
+        <button wire:click="increment">+</button>
+        <button wire:click="decrement">-</button>
     </div>
 </div>
